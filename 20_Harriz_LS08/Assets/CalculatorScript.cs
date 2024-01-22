@@ -13,6 +13,10 @@ public class CalculatorScript : MonoBehaviour
     public Toggle USD;
     public float SGDAmount;
     public Text debuggingtext;
+    public Toggle RM;
+    public Toggle EUR;
+    public Toggle KRW;
+    public Toggle TWD;
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +52,28 @@ public class CalculatorScript : MonoBehaviour
             value = SGDAmount * 110.42f;
             Convertedvalue.text = value.ToString() + " JPY";
         }
+        if (RM.GetComponent<Toggle>().isOn == true)
+        {
+            value = SGDAmount * 3.08f;
+            Convertedvalue.text = value.ToString() + " RM";
+        }
+        if (EUR.GetComponent<Toggle>().isOn == true)
+        {
+            value = SGDAmount * 0.63f;
+            Convertedvalue.text = value.ToString() + " EUR";
+        }
+        if (TWD.GetComponent<Toggle>().isOn == true)
+        {
+            value = SGDAmount * 20.73f;
+            Convertedvalue.text = value.ToString() + " TWD";
+        }
+        if (KRW.GetComponent<Toggle>().isOn == true)
+        {
+            value = SGDAmount * 881.54f;
+            Convertedvalue.text = value.ToString() + " KRW";
+        }
 
-        if ((USD.GetComponent<Toggle>().isOn == true)&&(JPY.GetComponent<Toggle>().isOn == true))
+        if ((USD.GetComponent<Toggle>().isOn == true)&&(JPY.GetComponent<Toggle>().isOn == true) && (RM.GetComponent<Toggle>().isOn == true) && (EUR.GetComponent<Toggle>().isOn == true) && (KRW.GetComponent<Toggle>().isOn == true) && (TWD.GetComponent<Toggle>().isOn == true))
         {
             debuggingtext.text = "Choose only one option";
             debuggingtext.GetComponent<Text>().color = Color.red;
@@ -74,5 +98,9 @@ public class CalculatorScript : MonoBehaviour
         //JPY.enabled = false;
         JPY.GetComponent<Toggle>().isOn = false;
         USD.GetComponent<Toggle>().isOn = false;
+        RM.GetComponent<Toggle>().isOn = false;
+        EUR.GetComponent<Toggle>().isOn = false;
+        KRW.GetComponent<Toggle>().isOn = false;
+        TWD.GetComponent<Toggle>().isOn = false;
     }
 }
